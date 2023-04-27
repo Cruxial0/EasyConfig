@@ -70,6 +70,7 @@ Some important notes to make about the current state of EasyConfig.
 * Do **not** call the `base.Load<T>()` method inside your class' constructor. Doing so will result in a recursive mess that crashes your program! :D
 * If you wish to add public properties and not have them be Serialized, you can prepend the `[NonSerialized]` attribute.
 * If using a DLL, the settings will have to be changed before building. This should be fixed in future versions. (sorry about that lol)
+* Environment settings can be found at [../EasyConfig/ConfigSettings.cs]. This will be abstracted to a seperate config file in future versions. **Changing the RootFolder is encouraged!**
 
 ### Adding custom Serializers
 Adding custom serializers to EasyConfig is quite the simple process.
@@ -111,3 +112,4 @@ Feel free to contribute! :D
 
 [Restore Nuget Packages]: https://learn.microsoft.com/en-us/nuget/consume-packages/package-restore
 [Releases]: https://github.com/Cruxial0/EasyConfig/releases
+[../EasyConfig/ConfigSettings.cs]: https://github.com/Cruxial0/EasyConfig/blob/main/EasyConfig/ConfigSettings.cs
