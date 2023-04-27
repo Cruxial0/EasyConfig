@@ -1,7 +1,7 @@
 ﻿using EasyConfig.Utils;
 
 namespace EasyConfig.Types {
-    public abstract class GameConfig : IBaseConfig {
+    public abstract class EasyConfig : IBaseConfig {
         // Name of config file. Defaults to the derived class' name.
         public string ConfigName { get; }
         
@@ -19,12 +19,12 @@ namespace EasyConfig.Types {
         /// </summary>
         /// <param name="config">Config to populate</param>
         /// <typeparam name="T">Config type used for deserialization</typeparam>
-        public virtual void Load<T>(GameConfig config) where T : GameConfig {
+        public virtual void Load<T>(EasyConfig config) where T : EasyConfig {
            var c = ConfigUtility.LoadConfig<T>(config.GetConfigPath());
            ConfigUtility.ApplyLoad(c, config);
         }
 
-        protected GameConfig() {
+        protected EasyConfig() {
             ConfigName = this.GetType().Name;
         }
     }

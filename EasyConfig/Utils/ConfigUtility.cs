@@ -12,7 +12,7 @@ namespace EasyConfig.Utils {
         /// </summary>
         /// <param name="config">Config to retrieve path for. Does not check for file existence.</param>
         /// <returns>The assumed path of config file.</returns>
-        public static string GetConfigPath(this GameConfig config) {
+        public static string GetConfigPath(this Types.EasyConfig config) {
             return Path.Combine(GetOrCreateDirectory(ConfigSettings.RootFolder),
                 config.ConfigName + GetFileExtension());
         }
@@ -21,7 +21,7 @@ namespace EasyConfig.Utils {
         /// Passes data to the configured serializer.
         /// </summary>
         /// <param name="config"></param>
-        public static void SaveConfig(this GameConfig config) {
+        public static void SaveConfig(this Types.EasyConfig config) {
             _activeSerializer.Save(config);
         }
         
@@ -31,7 +31,7 @@ namespace EasyConfig.Utils {
         /// <param name="path">Path to load data from.</param>
         /// <typeparam name="T">Config type to deserialize</typeparam>
         /// <returns>Config of type T</returns>
-        public static T LoadConfig<T>(string path) where T : GameConfig{
+        public static T LoadConfig<T>(string path) where T : Types.EasyConfig{
             _activeSerializer ??= SerializerLoader.GetSerializerFromFormat(ConfigSettings.Serializer);
             return _activeSerializer.Load<T>(path);
         }
@@ -41,7 +41,7 @@ namespace EasyConfig.Utils {
         /// </summary>
         /// <param name="source">Copy of object</param>
         /// <param name="dst">Main object</param>
-        public static void ApplyLoad(GameConfig source, GameConfig dst) {
+        public static void ApplyLoad(Types.EasyConfig source, Types.EasyConfig dst) {
             if(ConfigSettings.IncludeFields) _mappingUtilities.MapAllFields(source, dst);
             _mappingUtilities.MapAllProperties(source, dst);
         }

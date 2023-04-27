@@ -5,7 +5,7 @@ namespace EasyConfig.Serializers {
     public class XmlSerializer : ISerializer {
         public SerializeFormat Format => SerializeFormat.Xml;
 
-        public void Save(GameConfig config) {
+        public void Save(Types.EasyConfig config) {
             Type type = config.GetType();
             var xmlSerializer = new System.Xml.Serialization.XmlSerializer(type);
 
