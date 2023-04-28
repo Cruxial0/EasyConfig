@@ -20,19 +20,20 @@ namespace EasyConfig.Utils {
         /// <summary>
         /// Passes data to the configured serializer.
         /// </summary>
-        /// <param name="config"></param>
+        /// <param name="config">Config to serialize</param>
         public static void SaveConfig(this Types.EasyConfig config) {
+            IoUtility.CheckOrCreateFileSafe(config.GetConfigPath());
             _activeSerializer.Save(config);
         }
         
         /// <summary>
         /// Retrieves data from the configured serializer.
         /// </summary>
-        /// <param name="path">Path to load data from.</param>
+        /// <param name="path">Path to load data from</param>
         /// <typeparam name="T">Config type to deserialize</typeparam>
         /// <returns>Config of type T</returns>
         public static T LoadConfig<T>(string path) where T : Types.EasyConfig{
-            _activeSerializer ??= SerializerLoader.GetSerializerFromFormat(ConfigSettings.Serializer);
+            IoUtility.CheckOrCreateFileSafe(path);
             return _activeSerializer.Load<T>(path);
         }
         
