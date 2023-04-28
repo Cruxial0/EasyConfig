@@ -53,6 +53,10 @@ public class MyConfig : EasyConfig
     public void Load() => base.Load<MyConfig>(this);
 }
 ```
+Default config values can be added via property auto-implementation:
+```csharp
+public string MyString { get; set; } = "MyDefaultValue";
+```
 That's all there is to creating a Config structure. It can be used in the code as following:
 ```csharp
 private void Start()
