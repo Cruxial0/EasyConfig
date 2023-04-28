@@ -17,7 +17,11 @@ namespace EasyConfig.Serializers {
             var xmlSerializer = new System.Xml.Serialization.XmlSerializer(typeof(T));
 
             using StreamReader streamReader = new StreamReader(path);
-            return xmlSerializer.Deserialize(streamReader) as T;
+            // '10': Arbitrary number to check for root node
+            if (streamReader.ReadToEnd().Length < 10) return null!;
+
+            streamReader.BaseStream.Position = 0;
+            return (xmlSerializer.Deserialize(streamReader) as T)!;
         }
     }
 }
