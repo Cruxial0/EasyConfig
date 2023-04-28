@@ -6,7 +6,6 @@
         public void MapAllFields(object source, object dst)
         {
             System.Reflection.FieldInfo[] ps = source.GetType().GetFields();
-            bool isField = false;
             foreach (var item in ps)
             {
                 var o = item.GetValue(source);
@@ -14,7 +13,8 @@
                 if (p != null)
                 {
                     Type t = Nullable.GetUnderlyingType(p.FieldType) ?? p.FieldType;
-                    object safeValue = (o == null) ? null : Convert.ChangeType(o, t);
+                    if(o == null) continue;
+                    object safeValue = Convert.ChangeType(o, t);
                     p.SetValue(dst, safeValue);
                 }
             }
@@ -30,7 +30,8 @@
                 if (p != null)
                 {
                     Type t = Nullable.GetUnderlyingType(p.PropertyType) ?? p.PropertyType;
-                    object safeValue = (o == null) ? null : Convert.ChangeType(o, t);
+                    if(o == null) continue;
+                    object safeValue = Convert.ChangeType(o, t);
                     p.SetValue(dst, safeValue);
                 }
             }
