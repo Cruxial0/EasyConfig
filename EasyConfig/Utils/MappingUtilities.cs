@@ -1,4 +1,6 @@
-﻿namespace EasyConfig.Utils {
+﻿using System;
+
+namespace EasyConfig.Utils {
     /// <summary>
     /// Utility for mapping values to fields or variables.
     /// </summary>

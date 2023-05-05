@@ -1,4 +1,7 @@
-﻿using EasyConfig.Types;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using EasyConfig.Types;
 
 namespace EasyConfig.Utils {
     public static class SerializerLoader {
