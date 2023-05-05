@@ -34,6 +34,8 @@ namespace EasyConfig.Utils {
                     Type t = Nullable.GetUnderlyingType(p.PropertyType) ?? p.PropertyType;
                     if(o == null) continue;
                     object safeValue = Convert.ChangeType(o, t);
+                    
+                    if(p.GetSetMethod() == null) continue;
                     p.SetValue(dst, safeValue);
                 }
             }
