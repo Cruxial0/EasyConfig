@@ -1,4 +1,6 @@
-﻿using EasyConfig.Types;
+﻿using System;
+using System.IO;
+using EasyConfig.Types;
 
 namespace EasyConfig {
     public static class ConfigSettings {

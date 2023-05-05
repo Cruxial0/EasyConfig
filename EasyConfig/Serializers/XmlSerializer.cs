@@ -1,4 +1,5 @@
-﻿using EasyConfig.Types;
+﻿using System.IO;
+using EasyConfig.Types;
 using EasyConfig.Utils;
 
 namespace EasyConfig.Serializers {
@@ -6,7 +7,7 @@ namespace EasyConfig.Serializers {
         public SerializeFormat Format => SerializeFormat.Xml;
 
         public void Save(Types.EasyConfig config) {
-            Type type = config.GetType();
+            System.Type type = config.GetType();
             var xmlSerializer = new System.Xml.Serialization.XmlSerializer(type);
 
             using StreamWriter streamWriter = new StreamWriter(config.GetConfigPath());

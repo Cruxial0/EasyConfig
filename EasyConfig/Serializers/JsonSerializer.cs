@@ -7,11 +7,11 @@ namespace EasyConfig.Serializers {
         public SerializeFormat Format => SerializeFormat.Json;
 
         public void Save(Types.EasyConfig config) {
-            File.WriteAllText(config.GetConfigPath(),JsonConvert.SerializeObject(config));
+            System.IO.File.WriteAllText(config.GetConfigPath(), JsonConvert.SerializeObject(config));
         }
 
         T ISerializer.Load<T>(string path) {
-            return JsonConvert.DeserializeObject<T>(File.ReadAllText(path));
+            return JsonConvert.DeserializeObject<T>(System.IO.File.ReadAllText(path))!;
         }
     }
 }
