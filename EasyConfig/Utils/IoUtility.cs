@@ -32,5 +32,24 @@ namespace EasyConfig.Utils
                 sw.Dispose();
             }
         }
+        
+        /// <summary>
+        /// Tries casting the object to a given type.
+        /// </summary>
+        /// <param name="obj">Object to cast</param>
+        /// <param name="result">Successfully casted object</param>
+        /// <typeparam name="T">Type to cast into</typeparam>
+        /// <returns>Operation success</returns>
+        public static bool TryCast<T>(this object obj, out T result)
+        {
+            if (obj is T)
+            {
+                result = (T)obj;
+                return true;
+            }
+
+            result = default(T);
+            return false;
+        }
     }
 }

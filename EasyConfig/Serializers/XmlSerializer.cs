@@ -22,7 +22,8 @@ namespace EasyConfig.Serializers {
             if (streamReader.ReadToEnd().Length < 10) return null!;
 
             streamReader.BaseStream.Position = 0;
-            return (xmlSerializer.Deserialize(streamReader) as T)!;
+            var output = xmlSerializer.Deserialize(streamReader);
+            return output.TryCast<T>(out T config) ? config : null;
         }
     }
 }
