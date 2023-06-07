@@ -40,8 +40,12 @@ namespace EasyConfig.Utils
         /// <param name="result">Successfully casted object</param>
         /// <typeparam name="T">Type to cast into</typeparam>
         /// <returns>Operation success</returns>
-        public static bool TryCast<T>(this object obj, out T result)
-        {
+        public static bool TryCast<T>(this object? obj, out T result) {
+            if (obj == null) {
+                result = default(T);
+                return false;
+            }
+            
             if (obj is T)
             {
                 result = (T)obj;
