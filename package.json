@@ -10,6 +10,6 @@
   ],
   "category": "unity",
   "dependencies": {
-    "com.unity.nuget.newtonsoft-json": "latest"
+    "com.unity.nuget.newtonsoft-json": "2.0.2"
   }
 }
