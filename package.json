@@ -1,0 +1,15 @@
+{
+  "name": "com.crux.easyconfig",
+  "displayName": "EasyConfig",
+  "version": "1.0.0",
+  "unity": "2018.1",
+  "description": "A simple generic approach to creating and managing config files.",
+  "keywords": [
+    "configuration",
+    "unity"
+  ],
+  "category": "unity",
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "latest"
+  }
+}
