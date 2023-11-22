@@ -37,7 +37,6 @@ x64/
 *_p.c
 *_i.h
 *.ilk
-*.meta
 *.obj
 *.pch
 *.pdb
@@ -146,3 +145,5 @@ $RECYCLE.BIN/
 .DS_Store
 
 _NCrunch*
+
+.idea/*
