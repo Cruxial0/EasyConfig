@@ -6,9 +6,9 @@ using EasyConfig.Types;
 namespace EasyConfig.Utils {
     public static class ConfigUtility {
         // Get correct saving utility
-        private static ISerializer _activeSerializer = SerializerLoader.GetSerializerFromFormat(ConfigSettings.Serializer);
+        private static readonly ISerializer ActiveSerializer = SerializerLoader.GetSerializerFromFormat(ConfigSettings.Serializer);
 
-        private static MappingUtilities _mappingUtilities;
+        private static readonly MappingUtilities MappingUtilities = new MappingUtilities();
         
         /// <summary>
         /// Get path full path to config file.
@@ -26,7 +26,7 @@ namespace EasyConfig.Utils {
         /// <param name="config">Config to serialize</param>
         public static void SaveConfig(this Types.EasyConfig config) {
             IoUtility.CheckOrCreateFileSafe(config.GetConfigPath());
-            _activeSerializer.Save(config);
+            ActiveSerializer.Save(config);
         }
         
         /// <summary>
@@ -37,7 +37,7 @@ namespace EasyConfig.Utils {
         /// <returns>Config of type T</returns>
         public static T LoadConfig<T>(string path) where T : Types.EasyConfig{
             IoUtility.CheckOrCreateFileSafe(path);
-            return _activeSerializer.Load<T>(path);
+            return ActiveSerializer.Load<T>(path);
         }
         
         /// <summary>
@@ -46,8 +46,8 @@ namespace EasyConfig.Utils {
         /// <param name="source">Copy of object</param>
         /// <param name="dst">Main object</param>
         public static void ApplyLoad(Types.EasyConfig source, Types.EasyConfig dst) {
-            if(ConfigSettings.IncludeFields) _mappingUtilities.MapAllFields(source, dst);
-            _mappingUtilities.MapAllProperties(source, dst);
+            if(ConfigSettings.IncludeFields) MappingUtilities.MapAllFields(source, dst);
+            MappingUtilities.MapAllProperties(source, dst);
         }
         
         public static string GetFileExtension(bool excludeDot = false) 
