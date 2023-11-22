@@ -45,7 +45,7 @@ namespace EasyConfig.Utils {
         /// </summary>
         /// <param name="source">Copy of object</param>
         /// <param name="dst">Main object</param>
-        public static void ApplyLoad(Types.EasyConfig source, Types.EasyConfig dst) {
+        public static void ApplyLoad(Types.EasyConfig? source, Types.EasyConfig dst) {
             if(ConfigSettings.IncludeFields) MappingUtilities.MapAllFields(source, dst);
             MappingUtilities.MapAllProperties(source, dst);
         }

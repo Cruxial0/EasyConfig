@@ -5,8 +5,9 @@ namespace EasyConfig.Utils {
     /// Utility for mapping values to fields or variables.
     /// </summary>
     public class MappingUtilities {
-        public void MapAllFields(object source, object dst)
+        public void MapAllFields(object? source, object dst)
         {
+            if(source == null) return;
             System.Reflection.FieldInfo[] ps = source.GetType().GetFields();
             foreach (var item in ps)
             {
@@ -22,8 +23,9 @@ namespace EasyConfig.Utils {
             }
         }
         
-        public void MapAllProperties(object source, object dst)
+        public void MapAllProperties(object? source, object dst)
         {
+            if(source == null) return;
             System.Reflection.PropertyInfo[] ps = source.GetType().GetProperties();
             foreach (var item in ps)
             {
