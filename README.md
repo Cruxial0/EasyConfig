@@ -12,14 +12,19 @@ Created with Unity in mind, designed with flexibility in mind.
 ## Installation
 Clone the repository, or download the DLL/UnityPackage.
 
-### Cloning the repository
+### 1. Downloading the unity package
+1. Open the Unity package manager through the `Window > Package Manager` window
+2. Click the '+', then 'Add package from git URL...'
+3. Paste `https://github.com/Cruxial0/EasyConfig.git?path=/EasyConfig` then click 'Add'
+
+### 2. Cloning the repository
 1. Locate your destination folder
 2. Open your folder in your CLI of choice
 3. `git clone https://github.com/Cruxial0/EasyConfig`
 4. [Restore Nuget Packages]
 5. Build the project
 
-### Setting up for Unity
+### Alternatively, download it manually
 1. Download the UnityPackage from [Releases]
 2. Import preferred package into Unity
 3. Open the Package Manager (Window > Package Manager)
